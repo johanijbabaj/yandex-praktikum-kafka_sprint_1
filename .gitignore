@@ -125,6 +125,7 @@ celerybeat.pid
 .env
 .venv
 env/
+kafka_venv/
 venv/
 ENV/
 env.bak/
