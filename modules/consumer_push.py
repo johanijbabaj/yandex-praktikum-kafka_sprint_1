@@ -2,6 +2,7 @@ import logging
 from kafka import KafkaConsumer
 from threading import Thread, Event
 
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("PushConsumer")
 
 
@@ -11,7 +12,9 @@ class PushConsumer:
             topic,
             bootstrap_servers=broker,
             group_id=group_id,
-            auto_offset_reset="earliest"
+            auto_offset_reset="earliest",
+            enable_auto_commit=True,  # Autocommit ON
+            auto_commit_interval_ms=5000 # Interval 5 sec
         )
         self.stop_event = Event()
 
